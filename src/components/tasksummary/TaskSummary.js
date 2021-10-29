@@ -50,7 +50,7 @@ export default class TaskSummary extends Component {
           </Card>
 
           <Card className="summary-card">
-            <Card.Header><b>Removed</b></Card.Header>
+            <Card.Header><b>Overdude</b></Card.Header>
             <Card.Body>
               <Card.Text className="summary-card-title">
                 1
