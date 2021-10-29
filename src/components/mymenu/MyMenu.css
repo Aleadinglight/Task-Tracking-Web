@@ -1,0 +1,27 @@
+.my-menu {
+  padding-top: 50px;
+  width: 300px;
+  float: left;
+  background-color: #edeff2;
+  height: 100vh;
+}
+
+.my-menu-header {
+  text-align: center;
+  color: #0049b0;
+  padding-bottom: 3rem;
+}
+
+.my-menu-item {
+  padding-top: 1rem;
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+  text-decoration: none;
+  color: #64718a;
+  border-bottom: 1px solid  #edeff2;;
+}
+
+.my-menu-item:hover {
+  color: #0049b0;
+  background-color: #e5e8ec;
+}
