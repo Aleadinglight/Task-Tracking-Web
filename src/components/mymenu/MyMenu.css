@@ -2,7 +2,7 @@
   padding-top: 50px;
   width: 300px;
   float: left;
-  background-color: #edeff2;
+  background-color: rgba(0,0,0,.03);
   height: 100vh;
 }
 
@@ -18,7 +18,6 @@
   padding-bottom: 1rem;
   text-decoration: none;
   color: #64718a;
-  border-bottom: 1px solid  #edeff2;;
 }
 
 .my-menu-item:hover {
