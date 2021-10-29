@@ -1,0 +1,10 @@
+.ticket-solved-graph {
+  display: inline-block;
+  width: 70%;
+  margin-right: 30px;
+}
+
+.ticket-type-graph {
+  display: inline-block;
+  width: 20%;
+}
