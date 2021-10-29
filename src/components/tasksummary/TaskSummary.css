@@ -1,0 +1,36 @@
+.summary-card {
+  display: inline-block;
+  width: 15%;
+  min-width: 10rem;
+  min-height: 7rem;
+  margin: 10px 3rem 10px 0;
+  text-align: center;
+}
+
+.summary-card-title {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.my-navbar {
+  background-color: white;
+}
+
+.dashboard-content-container {
+  background-color: white;
+  height: 100vh;
+  float: none;
+  overflow: auto;
+  padding-bottom: 100px;
+}
+
+.dashboard-content {
+  color: #64718a;
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+.dashboard-header {
+  text-align: left;
+}
+
