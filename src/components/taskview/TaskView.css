@@ -1,0 +1,11 @@
+.task-list {
+  margin-top: 10px;
+}
+
+.tasklist-container {
+  background-color: white;
+  height: 100vh;
+  float: none;
+  overflow: auto;
+  padding: 100px 100px 100px 100px;
+}
