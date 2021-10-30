@@ -11,7 +11,7 @@ export default class MyMenu extends Component {
     super(props);
     this.state = {
       activeStyle: {
-        color: '#0049b0',
+        color: '#3080d0',
         backgroundColor: '#e5e8ec'
       }
     }
@@ -30,9 +30,9 @@ export default class MyMenu extends Component {
         <Stack>
 
           <div className="my-menu-header">
-            <h2 className="my-menu-header-text">
-              Task Tracking
-            </h2>
+            <h4 className="my-menu-header-text">
+              {"_tasktracking"}
+            </h4>
           </div>
 
           <NavLink className="my-menu-item" to="/"

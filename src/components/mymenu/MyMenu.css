@@ -1,15 +1,23 @@
+@font-face {
+  font-family: "Fredoka";
+  src: url("../../static/FredokaOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
 .my-menu {
   padding-top: 50px;
   width: 300px;
   float: left;
-  background-color: rgba(0,0,0,.03);
+  background-color: rgba(0, 0, 0, 0.03);
   height: 100vh;
 }
 
 .my-menu-header {
-  text-align: center;
-  color: #0049b0;
-  padding-bottom: 3rem;
+  text-align: left;
+  color: rgb(255, 99, 132);
+  font-family: "Fredoka";
+  padding-bottom: 2rem;
+  padding-left: 3rem;
 }
 
 .my-menu-item {
@@ -21,6 +29,6 @@
 }
 
 .my-menu-item:hover {
-  color: #0049b0;
+  color: #3080d0;
   background-color: #e5e8ec;
 }
