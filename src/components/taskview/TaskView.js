@@ -3,11 +3,11 @@ import Container from 'react-bootstrap/Container'
 import MyMenu from '../mymenu/MyMenu'
 import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
 import ListGroup from 'react-bootstrap/ListGroup'
+import NewTask from '../newtask/NewTask'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import './TaskView.css'
@@ -46,10 +46,16 @@ export default class TaskView extends Component {
     }
   }
 
-  setModalShow = (isShow) => {
-    console.log(`isShow`, isShow)
+  createNewTask = (info) => {
+    console.log(`info`, info)
     this.setState({
-      modalShow: isShow
+      modalShow: false
+    });
+  }
+
+  openModal = () => {
+    this.setState({
+      modalShow: true
     });
   }
 
@@ -117,49 +123,19 @@ export default class TaskView extends Component {
     }
   }
 
-
   render() {
     return (
       <Container className="dashboard-container" fluid>
         <MyMenu />
-        <Modal
+        <NewTask
           show={this.state.modalShow}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              New Task
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-              consectetur ac, vestibulum at eros.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="primary"
-              onClick={() => this.setModalShow(false)}>
-              Create
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => this.setModalShow(false)}>
-              Cancel
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          onHide={(info) => this.createNewTask(info)}
+        />
         <div className="tasklist-container">
-          <Button variant="primary" onClick={() => this.setModalShow(true)}>
+          <Button variant="primary" onClick={this.openModal}>
             <FontAwesomeIcon icon={faPlus} />
             {" "}
             <b>New Task</b>
-
           </Button>
           <Accordion className="task-list">
             <Accordion.Item eventKey="0">
