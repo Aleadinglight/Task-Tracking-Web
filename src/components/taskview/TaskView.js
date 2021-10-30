@@ -51,6 +51,18 @@ export default class TaskView extends Component {
     this.setState({
       modalShow: false
     });
+
+    if (!info) {
+      return;
+    }
+
+    for (let key of Object.keys(info)) {
+      if (info[key] === "") {
+        return;
+      }
+    }
+
+    console.log("Create new task")
   }
 
   openModal = () => {
@@ -129,7 +141,7 @@ export default class TaskView extends Component {
         <MyMenu />
         <NewTask
           show={this.state.modalShow}
-          onHide={(info) => this.createNewTask(info)}
+          onHide={this.createNewTask}
         />
         <div className="tasklist-container">
           <Button variant="primary" onClick={this.openModal}>
