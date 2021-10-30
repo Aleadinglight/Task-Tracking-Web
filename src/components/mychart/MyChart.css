@@ -1,18 +1,17 @@
 .ticket-solved-card {
   display: inline-block;
-  width: 70%;
+
   margin-right: 30px;
 }
 
 #ticket-solve-chart {
-  height: 700px;
+  
 }
 
 .ticket-type-card {
   display: inline-block;
-  width: 25%;
 }
 
 #ticket-type-chart {
-  height: 700px;
+  
 }
