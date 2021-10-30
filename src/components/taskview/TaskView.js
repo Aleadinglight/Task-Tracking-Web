@@ -4,8 +4,12 @@ import MyMenu from '../mymenu/MyMenu'
 import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Badge from 'react-bootstrap/Badge'
+import ListGroup from 'react-bootstrap/ListGroup'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import './TaskView.css'
 
 export default class TaskView extends Component {
@@ -13,6 +17,32 @@ export default class TaskView extends Component {
     super(props);
     this.state = {
       modalShow: false,
+      data: [
+        {
+          id: 1,
+          name: "Study advance C++",
+          description: "Study c++ in violll as optional study ",
+          due: "20-12-2021",
+          priority: 0,
+          status: 0,
+        },
+        {
+          id: 2,
+          name: "Study advance Java",
+          description: "Study java in violll as optional study ",
+          due: "20-12-2021",
+          priority: 2,
+          status: 0,
+        },
+        {
+          id: 3,
+          name: "Study advance Python",
+          description: "Study python in violll as optional study ",
+          due: "20-12-2021",
+          priority: 1,
+          status: 2,
+        }
+      ]
     }
   }
 
@@ -22,6 +52,71 @@ export default class TaskView extends Component {
       modalShow: isShow
     });
   }
+
+  openTask = (id) => {
+    console.log(`open task with id:`, id)
+  }
+
+  getPriorityText = (priority) => {
+    if (priority === 0) {
+      return (
+        <Badge bg="danger">
+          High
+        </Badge>
+      );
+    }
+    else if (priority === 1) {
+      return (
+        <Badge bg="warning">
+          High
+        </Badge>
+      );
+    }
+    else if (priority === 2) {
+      return (
+        <Badge bg="success">
+          Low
+        </Badge>
+      );
+    }
+  }
+
+  getItemOfStatus = (status, item) => {
+    if (item.status === status) {
+      return (
+        <ListGroup.Item as="li" key={item.id}>
+          <Container fluid>
+            <Row>
+              <Col>
+                <Button className="task-list-name"
+                  variant="link"
+                  onClick={() => this.openTask(item.id)}>
+                  {item.name}
+                </Button>
+              </Col>
+              <Col md="auto" lg="2" className="task-list-due">
+                <Button className="task-list-due"
+                  variant="link">
+                  <span><FontAwesomeIcon icon={faCalendarDay} />{" " + item.due}</span>
+                </Button>
+
+              </Col>
+              <Col xs lg="1">
+                <Button className="task-list-priority"
+                  variant="light">
+                  {this.getPriorityText(item.priority)}
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </ListGroup.Item>
+      )
+    }
+    else {
+      return ""
+    }
+  }
+
 
   render() {
     return (
@@ -68,30 +163,53 @@ export default class TaskView extends Component {
           </Button>
           <Accordion className="task-list">
             <Accordion.Item eventKey="0">
-              <Accordion.Header> </Accordion.Header>
-              <Accordion.Body>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                est laborum.
+              <Accordion.Header><b>On-Going</b></Accordion.Header>
+              <Accordion.Body className="task-list-body">
+                <ListGroup as="ul">
+                  {this.state.data.map((item, idx) => {
+                    return this.getItemOfStatus(0, item)
+                  })}
+                </ListGroup>
+
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
 
           <Accordion className="task-list">
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Accordion Item #1</Accordion.Header>
-              <Accordion.Body>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                est laborum.
+            <Accordion.Item eventKey="1">
+              <Accordion.Header><b>Open</b></Accordion.Header>
+              <Accordion.Body className="task-list-body" >
+                <ListGroup as="ul">
+                  {this.state.data.map((item, idx) => {
+                    return this.getItemOfStatus(1, item)
+                  })}
+                </ListGroup>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+
+          <Accordion className="task-list">
+            <Accordion.Item eventKey="2">
+              <Accordion.Header><b>Completed</b></Accordion.Header>
+              <Accordion.Body className="task-list-body">
+                <ListGroup as="ul">
+                  {this.state.data.map((item, idx) => {
+                    return this.getItemOfStatus(2, item)
+                  })}
+                </ListGroup>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+
+          <Accordion className="task-list">
+            <Accordion.Item eventKey="3">
+              <Accordion.Header><b>Overdue</b></Accordion.Header>
+              <Accordion.Body className="task-list-body">
+                <ListGroup as="ul">
+                  {this.state.data.map((item, idx) => {
+                    return this.getItemOfStatus(3, item)
+                  })}
+                </ListGroup>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
