@@ -13,8 +13,8 @@ export default class NewTask extends Component {
       task: {
         name: "",
         description: "",
-        priority: 0,
-        status: 0,
+        priority: "0",
+        status: "0",
         due: ""
       }
     }
@@ -30,7 +30,7 @@ export default class NewTask extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            New Task
+            <h4><b>New Task</b></h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

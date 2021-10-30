@@ -23,24 +23,24 @@ export default class TaskView extends Component {
           name: "Study advance C++",
           description: "Study c++ in violll as optional study ",
           due: "20-12-2021",
-          priority: 0,
-          status: 0,
+          priority: "0",
+          status: "0",
         },
         {
           id: 2,
           name: "Study advance Java",
           description: "Study java in violll as optional study ",
           due: "20-12-2021",
-          priority: 2,
-          status: 0,
+          priority: "2",
+          status: "0",
         },
         {
           id: 3,
           name: "Study advance Python",
           description: "Study python in violll as optional study ",
           due: "20-12-2021",
-          priority: 1,
-          status: 2,
+          priority: "1",
+          status: "2",
         }
       ]
     }
@@ -62,7 +62,10 @@ export default class TaskView extends Component {
       }
     }
 
-    console.log("Create new task")
+    info.id = this.state.data.length;
+    this.setState({
+      data: [...this.state.data, info]
+    })
   }
 
   openModal = () => {
@@ -76,21 +79,21 @@ export default class TaskView extends Component {
   }
 
   getPriorityText = (priority) => {
-    if (priority === 0) {
+    if (priority === "0") {
       return (
         <Badge bg="danger">
           High
         </Badge>
       );
     }
-    else if (priority === 1) {
+    else if (priority === "1") {
       return (
         <Badge bg="warning">
           High
         </Badge>
       );
     }
-    else if (priority === 2) {
+    else if (priority === "2") {
       return (
         <Badge bg="success">
           Low
@@ -155,7 +158,7 @@ export default class TaskView extends Component {
               <Accordion.Body className="task-list-body">
                 <ListGroup as="ul">
                   {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus(0, item)
+                    return this.getItemOfStatus("0", item)
                   })}
                 </ListGroup>
 
@@ -169,7 +172,7 @@ export default class TaskView extends Component {
               <Accordion.Body className="task-list-body" >
                 <ListGroup as="ul">
                   {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus(1, item)
+                    return this.getItemOfStatus("1", item)
                   })}
                 </ListGroup>
               </Accordion.Body>
@@ -182,7 +185,7 @@ export default class TaskView extends Component {
               <Accordion.Body className="task-list-body">
                 <ListGroup as="ul">
                   {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus(2, item)
+                    return this.getItemOfStatus("2", item)
                   })}
                 </ListGroup>
               </Accordion.Body>
@@ -195,7 +198,7 @@ export default class TaskView extends Component {
               <Accordion.Body className="task-list-body">
                 <ListGroup as="ul">
                   {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus(3, item)
+                    return this.getItemOfStatus("3", item)
                   })}
                 </ListGroup>
               </Accordion.Body>
