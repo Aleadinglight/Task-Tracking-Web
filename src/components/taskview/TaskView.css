@@ -32,3 +32,17 @@
   background-color: transparent;
   border: none;
 }
+
+.create-task-button {
+  background-color: rgb(48, 128, 208);
+  border-color: rgb(48, 128, 208);
+}
+
+.create-task-button:hover {
+  background-color: rgb(54, 141, 228);
+  border-color: rgb(54, 141, 228);
+}
+
+.accordion-button:not(.collapsed) {
+  color: rgb(48, 128, 208);
+}

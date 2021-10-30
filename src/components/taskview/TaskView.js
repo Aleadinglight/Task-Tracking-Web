@@ -89,7 +89,7 @@ export default class TaskView extends Component {
     else if (priority === "1") {
       return (
         <Badge bg="warning">
-          High
+          Medium
         </Badge>
       );
     }
@@ -147,7 +147,7 @@ export default class TaskView extends Component {
           onHide={this.createNewTask}
         />
         <div className="tasklist-container">
-          <Button variant="primary" onClick={this.openModal}>
+          <Button variant="primary" className="create-task-button" onClick={this.openModal}>
             <FontAwesomeIcon icon={faPlus} />
             {" "}
             <b>New Task</b>

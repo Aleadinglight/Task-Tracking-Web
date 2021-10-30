@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import Navbar from 'react-bootstrap/Navbar'
 import MyChart from '../mychart/MyChart'
+
 export default class TaskSummary extends Component {
   render() {
     return (
@@ -14,7 +15,7 @@ export default class TaskSummary extends Component {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Signed in as: <a href="#login">Mark Otto</a>
+                Signed in as: <a href="#login">Admin</a>
               </Navbar.Text>
             </Navbar.Collapse>
           </Container>
@@ -35,7 +36,7 @@ export default class TaskSummary extends Component {
             <Card.Header><b>Completed</b></Card.Header>
             <Card.Body>
               <Card.Text className="summary-card-title">
-                10
+                65
               </Card.Text>
             </Card.Body>
           </Card>
@@ -50,10 +51,10 @@ export default class TaskSummary extends Component {
           </Card>
 
           <Card className="summary-card">
-            <Card.Header><b>Overdude</b></Card.Header>
+            <Card.Header><b>Overdue</b></Card.Header>
             <Card.Body>
               <Card.Text className="summary-card-title">
-                1
+                2
               </Card.Text>
             </Card.Body>
           </Card>
