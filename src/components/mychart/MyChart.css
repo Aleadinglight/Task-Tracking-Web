@@ -1,17 +1,8 @@
 .ticket-solved-card {
   display: inline-block;
-
   margin-right: 30px;
-}
-
-#ticket-solve-chart {
-  
 }
 
 .ticket-type-card {
   display: inline-block;
-}
-
-#ticket-type-chart {
-  
 }
