@@ -85,17 +85,17 @@ export default class MyChart extends Component {
   render() {
     return (
       <Container className="dashboard-content" fluid>
-        <Card className="ticket-solved-graph">
+        <Card className="ticket-solved-card">
           <Card.Header><b>Ticket solved</b></Card.Header>
           <Card.Body>
-            <canvas id="ticket-solve-chart" width="400" height="200"></canvas>
+            <canvas id="ticket-solve-chart" ></canvas>
           </Card.Body>
         </Card>
 
-        <Card className="ticket-type-graph">
+        <Card className="ticket-type-card">
           <Card.Header><b>Ticket type</b></Card.Header>
           <Card.Body>
-            <canvas id="ticket-type-chart" width="400" height="200"></canvas>
+            <canvas id="ticket-type-chart" ></canvas>
           </Card.Body>
         </Card>
       </Container>
