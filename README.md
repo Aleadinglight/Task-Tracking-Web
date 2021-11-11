@@ -2,7 +2,11 @@
 # Task Tracking
   
 A small web application keeps track of my daily tasks. Customized to my own requirements and preferences. Designed with flexibility and portability in mind.
-  
+
+<kbd>
+ <img src="https://github.com/Aleadinglight/Task-Tracking-Web/blob/e181cc956573641a499d293a77e7f179295771b9/src/images/task_tracking.png" width="480">
+</kbd>
+
 ## About
 
 Some of the key features:  
