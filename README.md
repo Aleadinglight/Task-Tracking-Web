@@ -2,18 +2,31 @@
 # Task Tracking
   
 A small web application keeps track of my daily tasks. Customized to my own requirements and preferences. Designed with flexibility and portability in mind.
-
-<kbd>
- <img src="https://github.com/Aleadinglight/Task-Tracking-Web/blob/e181cc956573641a499d293a77e7f179295771b9/src/images/task_tracking.png" width="480">
-</kbd>
+  
+  <kbd>
+   <img src="https://github.com/Aleadinglight/Task-Tracking-Web/blob/e181cc956573641a499d293a77e7f179295771b9/src/images/task_tracking.png" width="480">
+  </kbd>
 
 ## About
 
 Some of the key features:  
+- **Customization:** Customize tasks according to your system, easy to start with. 
+  
+  <kbd>
+   <img src="https://github.com/Aleadinglight/Task-Tracking-Web/blob/master/demo/task_create.gif" width="480">
+  </kbd> 
+
 - **Dashboard:** Summary with charts for visualizing works.  
-- **Customization:** Customize tasks according to your system, easy to start with.  
-- **Prioritization:** Set a priority flag to keep yourself focused on your critical goals.  
-- **Typeful:** Define types of tasks according to your needs.
+  
+  <kbd>
+   <img src="https://github.com/Aleadinglight/Task-Tracking-Web/blob/master/demo/dashboard.gif" width="480">
+  </kbd>
+
+- **Prioritization & Typeful:** Set a priority flag to keep yourself focused on your critical goals and define types of tasks according to your needs.  
+  
+  <kbd>
+   <img src="https://github.com/Aleadinglight/Task-Tracking-Web/blob/master/demo/task_view.gif" width="480">
+  </kbd>
 
 ## Learn More
 
