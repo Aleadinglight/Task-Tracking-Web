@@ -16,10 +16,10 @@ export default class TaskView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalShow: false,
+      showNewTask: false,
       data: [
         {
-          id: 1,
+          id: 0,
           name: "Study C++",
           description: "Finish C++ assigment in the Violope course",
           due: "20-12-2021",
@@ -27,7 +27,7 @@ export default class TaskView extends Component {
           status: "0",
         },
         {
-          id: 2,
+          id: 1,
           name: "Add MongoDB to the backend server",
           description: "Using Mongo Atlas and mongoose to configure backend server",
           due: "20-12-2021",
@@ -35,24 +35,28 @@ export default class TaskView extends Component {
           status: "0",
         },
         {
-          id: 3,
+          id: 2,
           name: "Create UI for Task Tracking",
           description: "Use React to create the UI for task tracking",
           due: "20-12-2021",
           priority: "1",
           status: "2",
         }
-      ]
+      ],
+      taskProps: null
     }
   }
 
   createNewTask = (info) => {
+    
     console.log(`info`, info)
+
     this.setState({
-      modalShow: false
+      showNewTask: false
     });
 
     if (!info) {
+      console.log("task not created")
       return;
     }
 
@@ -68,9 +72,10 @@ export default class TaskView extends Component {
     })
   }
 
-  openModal = () => {
+  onNewTaskClick = () => {
     this.setState({
-      modalShow: true
+      showNewTask: true,
+      taskProps: null
     });
   }
 
@@ -82,6 +87,10 @@ export default class TaskView extends Component {
     console.log(`open task with id:`, id)
     let task = this.getTask(id);
     console.log(task);
+    this.setState({
+      showNewTask: true,
+      taskProps: task
+    });
   }
 
   getPriorityText = (priority) => {
@@ -149,12 +158,13 @@ export default class TaskView extends Component {
       <Container className="dashboard-container" fluid>
         <MyMenu />
         <NewTask
-          show={this.state.modalShow}
+          props={this.state.taskProps}
+          show={this.state.showNewTask}
           onHide={this.createNewTask}
         />
         <div className="tasklist-container">
           <Button variant="primary" className="create-task-button" 
-            onClick={this.openModal}>
+            onClick={this.onNewTaskClick}>
             <FontAwesomeIcon icon={faPlus} />
             {" "}
             <b>New Task</b>
