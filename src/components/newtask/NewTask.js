@@ -69,6 +69,7 @@ export default class NewTask extends Component {
       return "";
     }
     else {
+      console.log(`this.props.props.status`, this.props.props.status)
       return this.props.props.status;
     }
   }
@@ -78,7 +79,11 @@ export default class NewTask extends Component {
       return "";
     }
     else {
-      return this.props.props.date;
+      console.log(`this.props.props.due`, this.props.props.due)
+      let date = new Date(this.props.props.due.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
+      const offset = date.getTimezoneOffset();
+      let trueDate = new Date(date.getTime() - (offset*60*1000));
+      return trueDate.toISOString().split("T")[0];
     } 
   }
 
@@ -129,7 +134,7 @@ export default class NewTask extends Component {
                 <Col>
                   <Form.Label>Deadline</Form.Label>
                   <Form.Control type="date"
-                    defaultValue={this.getTaskDate}
+                    defaultValue={this.getTaskDate()}
                     onChange={(e) => this.setState({
                       task: {
                         ...this.state.task,
@@ -142,7 +147,7 @@ export default class NewTask extends Component {
 
                   <Form.Select
                     label="Priority"
-                    defaultValue={this.getTaskPriority}
+                    defaultValue={this.getTaskPriority()}
                     onChange={(e) => this.setState({
                       task: {
                         ...this.state.task,
@@ -158,7 +163,7 @@ export default class NewTask extends Component {
                 <Col>
                   <Form.Label>Status</Form.Label>
                   <Form.Select
-                    defaultValue={this.getTaskStatus}
+                    defaultValue={this.getTaskStatus()}
                     onChange={(e) => this.setState({
                       task: {
                         ...this.state.task,
