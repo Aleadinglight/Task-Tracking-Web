@@ -9,6 +9,7 @@ import "./NewTask.css"
 export default class NewTask extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       task: {
         name: "",
@@ -18,6 +19,67 @@ export default class NewTask extends Component {
         due: ""
       }
     }
+  }
+
+  updateProps = (task) => {
+    if (!task) {
+      return;
+    }
+
+    this.setState({
+      task: {
+        name: task.name,
+        description: task.description,
+        priority: task.priority,
+        status: task.status,
+        due: task.due
+      }
+    })
+  }
+
+  getTaskName = () => {
+    if (!this.props.props) {
+      return "";
+    }
+    else {
+      return this.props.props.name;
+    }
+  }
+
+  getTaskDescription = () => {
+    if (!this.props.props) {
+      return "";
+    }
+    else {
+      return this.props.props.description;
+    }
+  }
+
+  getTaskPriority = () => {
+    if (!this.props.props) {
+      return "";
+    }
+    else {
+      return this.props.props.priority;
+    }
+  }
+
+  getTaskStatus = () => {
+    if (!this.props.props) {
+      return "";
+    }
+    else {
+      return this.props.props.status;
+    }
+  }
+
+  getTaskDate = () => {
+    if (!this.props.props) {
+      return "";
+    }
+    else {
+      return this.props.props.date;
+    } 
   }
 
   render() {
@@ -38,6 +100,7 @@ export default class NewTask extends Component {
             <Form.Group className="mb-3">
               <Form.Label>Task Name</Form.Label>
               <Form.Control placeholder="Enter task name"
+                defaultValue={this.getTaskName()}
                 onChange={(e) => this.setState({
                   task: {
                     ...this.state.task,
@@ -51,6 +114,7 @@ export default class NewTask extends Component {
               <Form.Label>Description</Form.Label>
               <Form.Control placeholder="Description of this task"
                 as="textarea"
+                defaultValue={this.getTaskDescription()}
                 onChange={(e) => this.setState({
                   task: {
                     ...this.state.task,
@@ -65,6 +129,7 @@ export default class NewTask extends Component {
                 <Col>
                   <Form.Label>Deadline</Form.Label>
                   <Form.Control type="date"
+                    defaultValue={this.getTaskDate}
                     onChange={(e) => this.setState({
                       task: {
                         ...this.state.task,
@@ -77,6 +142,7 @@ export default class NewTask extends Component {
 
                   <Form.Select
                     label="Priority"
+                    defaultValue={this.getTaskPriority}
                     onChange={(e) => this.setState({
                       task: {
                         ...this.state.task,
@@ -92,6 +158,7 @@ export default class NewTask extends Component {
                 <Col>
                   <Form.Label>Status</Form.Label>
                   <Form.Select
+                    defaultValue={this.getTaskStatus}
                     onChange={(e) => this.setState({
                       task: {
                         ...this.state.task,
@@ -108,12 +175,12 @@ export default class NewTask extends Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button 
+          <Button
             onClick={() => this.props.onHide(this.state.task)}>
-            Create
+            Update
           </Button>
-          <Button variant="secondary" 
-            onClick={() => this.props.onHide(this.state.task)}>
+          <Button variant="secondary"
+            onClick={() => this.props.onHide(false)}>
             Cancel
           </Button>
         </Modal.Footer>
