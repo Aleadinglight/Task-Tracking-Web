@@ -108,8 +108,14 @@ export default class NewTask extends Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => this.props.onHide(this.state.task)}>Create</Button>
-          <Button variant="secondary" onClick={() => this.props.onHide(this.state.task)}>Cancel</Button>
+          <Button 
+            onClick={() => this.props.onHide(this.state.task)}>
+            Create
+          </Button>
+          <Button variant="secondary" 
+            onClick={() => this.props.onHide(this.state.task)}>
+            Cancel
+          </Button>
         </Modal.Footer>
       </Modal>
     );
