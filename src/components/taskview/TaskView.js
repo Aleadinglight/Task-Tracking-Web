@@ -74,8 +74,14 @@ export default class TaskView extends Component {
     });
   }
 
+  getTask = (id) => {
+    return this.state.data.find(item => item.id === id);
+  }
+
   openTask = (id) => {
     console.log(`open task with id:`, id)
+    let task = this.getTask(id);
+    console.log(task);
   }
 
   getPriorityText = (priority) => {
@@ -147,7 +153,8 @@ export default class TaskView extends Component {
           onHide={this.createNewTask}
         />
         <div className="tasklist-container">
-          <Button variant="primary" className="create-task-button" onClick={this.openModal}>
+          <Button variant="primary" className="create-task-button" 
+            onClick={this.openModal}>
             <FontAwesomeIcon icon={faPlus} />
             {" "}
             <b>New Task</b>
@@ -161,7 +168,6 @@ export default class TaskView extends Component {
                     return this.getItemOfStatus("0", item)
                   })}
                 </ListGroup>
-
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
