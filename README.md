@@ -51,3 +51,7 @@ $ npm start
 ```
 
 Visit https://localhost:3000 to view the application.
+
+
+## Docs
+Documentation can be found at [docs](https://github.com/Aleadinglight/Task-Tracking-Web/blob/master/docs.md).
