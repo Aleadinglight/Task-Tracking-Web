@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import React from 'react';
 import DashBoard from './components/dashboard/DashBoard';
 import TaskView from './components/taskview/TaskView';
 
@@ -14,7 +15,6 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
       <Switch>
-        
         <Route path="/tasks">
           <TaskView />
         </Route>

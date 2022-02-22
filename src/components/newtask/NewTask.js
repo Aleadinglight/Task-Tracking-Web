@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import "./NewTask.css"
+import React, { Component } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import "./NewTask.css";
 
 export default class NewTask extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       task: {
         name: "",
         description: "",
-        priority: "0",
-        status: "0",
+        priority: 0,
+        status: 0,
         due: ""
       }
-    }
+    };
   }
 
   updateProps = (task) => {
@@ -80,11 +80,11 @@ export default class NewTask extends Component {
     }
     else {
       console.log(`this.props.props.due`, this.props.props.due)
-      let date = new Date(this.props.props.due.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
+      let date = new Date(this.props.props.due.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
       const offset = date.getTimezoneOffset();
-      let trueDate = new Date(date.getTime() - (offset*60*1000));
+      let trueDate = new Date(date.getTime() - (offset * 60 * 1000));
       return trueDate.toISOString().split("T")[0];
-    } 
+    }
   }
 
   render() {

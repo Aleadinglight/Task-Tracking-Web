@@ -1,9 +1,9 @@
-import './TaskSummary.css'
-import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Card from 'react-bootstrap/Card'
-import Navbar from 'react-bootstrap/Navbar'
-import MyChart from '../mychart/MyChart'
+import './TaskSummary.css';
+import React, { Component } from 'react';
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import Navbar from 'react-bootstrap/Navbar';
+import MyChart from '../mychart/MyChart';
 
 export default class TaskSummary extends Component {
   render() {
