@@ -1,227 +1,101 @@
-import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import MyMenu from '../mymenu/MyMenu'
-import Accordion from 'react-bootstrap/Accordion'
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Badge from 'react-bootstrap/Badge'
-import ListGroup from 'react-bootstrap/ListGroup'
-import NewTask from '../newtask/NewTask'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
-import './TaskView.css'
+import React, { useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export default class TaskView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showNewTask: false,
-      data: [
-        {
-          id: 0,
-          name: "Study C++",
-          description: "Finish C++ assigment in the Violope course",
-          due: "20-12-2021",
-          priority: "0",
-          status: "0",
-        },
-        {
-          id: 1,
-          name: "Add MongoDB to the backend server",
-          description: "Using Mongo Atlas and mongoose to configure backend server",
-          due: "20-12-2021",
-          priority: "2",
-          status: "0",
-        },
-        {
-          id: 2,
-          name: "Create UI for Task Tracking",
-          description: "Use React to create the UI for task tracking",
-          due: "20-12-2021",
-          priority: "1",
-          status: "2",
-        }
-      ],
-      taskProps: null
+// import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+
+import MyMenu from '../mymenu/MyMenu';
+import NewTask from '../newtask/NewTask';
+import TaskGroup from '../taskgroup/TaskGroup';
+import './TaskView.css';
+
+export default function TaskView() {
+  const [showNewTask, setShowNewTask] = useState(false);
+  const [taskProps, setTaskProps] = useState(null);
+  const data = [
+    {
+      id: "99460a8a-93a5-11ec-b909-0242ac120002",
+      name: "Read System Design book",
+      description: "Finish chpt.4 Rate Limiter",
+      due: "27-02-2022",
+      priority: 0,
+      status: 0,
+    },
+    {
+      id: "01b1baa0-93a7-11ec-b909-0242ac120002",
+      name: "Add MongoDB to the backend server",
+      description: "Using Mongo Atlas and mongoose to configure backend server",
+      due: "01-03-2022",
+      priority: 2,
+      status: 0,
+    },
+    {
+      id: "472fc78a-aa5e-4bcd-8690-9607e8537596",
+      name: "Learn C++",
+      description: "Study multi-threaded application in C++",
+      due: "20-12-2021",
+      priority: 2,
+      status: 1,
+    },
+    {
+      id: "a4541eee-93a5-11ec-b909-0242ac120002",
+      name: "Create UI for Task Tracking",
+      description: "Update class component to function component in UI",
+      due: "20-12-2021",
+      priority: 1,
+      status: 2,
     }
-  }
-
-  createNewTask = (info) => {
-    
-    console.log(`info`, info)
-
-    this.setState({
-      showNewTask: false
-    });
+  ];
+  const createNewTask = (info) => {
+    setShowNewTask(false);
 
     if (!info) {
-      console.log("task not created")
       return;
     }
+    console.log(info);
+  };
 
-    for (let key of Object.keys(info)) {
-      if (info[key] === "") {
-        return;
-      }
-    }
+  const onNewTaskClick = () => {
+    setShowNewTask(true);
+    setTaskProps(null);
+  };
 
-    info.id = this.state.data.length;
-    this.setState({
-      data: [...this.state.data, info]
-    })
-  }
-
-  onNewTaskClick = () => {
-    this.setState({
-      showNewTask: true,
-      taskProps: null
-    });
-  }
-
-  getTask = (id) => {
-    return this.state.data.find(item => item.id === id);
-  }
-
-  openTask = (id) => {
-    console.log(`open task with id:`, id)
-    let task = this.getTask(id);
+  const openTask = (id) => {
+    console.log(`open task with id:`, id);
+    const task = data.find((item) => item.id === id);
     console.log(task);
-    this.setState({
-      showNewTask: true,
-      taskProps: task
-    });
-  }
+    setTaskProps(task);
+    setShowNewTask(true);
+  };
 
-  getPriorityText = (priority) => {
-    if (priority === "0") {
-      return (
-        <Badge bg="danger">
-          High
-        </Badge>
-      );
-    }
-    else if (priority === "1") {
-      return (
-        <Badge bg="warning">
-          Medium
-        </Badge>
-      );
-    }
-    else if (priority === "2") {
-      return (
-        <Badge bg="success">
-          Low
-        </Badge>
-      );
-    }
-  }
+  return (
+    <Container className="dashboard-container" fluid>
+      <MyMenu />
+      <NewTask
+        inputTask={taskProps}
+        show={showNewTask}
+        onHide={createNewTask}
+      />
+      <div className="tasklist-container">
+        <Button
+          variant="primary"
+          className="create-task-button"
+          onClick={onNewTaskClick}
+        >
+          <FontAwesomeIcon icon={faPlus} />
+          {" "}
+          <b>New Task</b>
+        </Button>
 
-  getItemOfStatus = (status, item) => {
-    if (item.status === status) {
-      return (
-        <ListGroup.Item as="li" key={item.id}>
-          <Container fluid>
-            <Row>
-              <Col>
-                <Button className="task-list-name"
-                  variant="link"
-                  onClick={() => this.openTask(item.id)}>
-                  {item.name}
-                </Button>
-              </Col>
-              <Col md="auto" lg="2" className="task-list-due">
-                <Button className="task-list-due"
-                  variant="link">
-                  <span><FontAwesomeIcon icon={faCalendarDay} />{" " + item.due}</span>
-                </Button>
-
-              </Col>
-              <Col xs lg="1">
-                <Button className="task-list-priority"
-                  variant="light">
-                  {this.getPriorityText(item.priority)}
-                </Button>
-              </Col>
-            </Row>
-          </Container>
-        </ListGroup.Item>
-      )
-    }
-    else {
-      return ""
-    }
-  }
-
-  render() {
-    return (
-      <Container className="dashboard-container" fluid>
-        <MyMenu />
-        <NewTask
-          props={this.state.taskProps}
-          show={this.state.showNewTask}
-          onHide={this.createNewTask}
+        <TaskGroup
+          data={data}
+          openTask={openTask}
         />
-        <div className="tasklist-container">
-          <Button variant="primary" className="create-task-button" 
-            onClick={this.onNewTaskClick}>
-            <FontAwesomeIcon icon={faPlus} />
-            {" "}
-            <b>New Task</b>
-          </Button>
-          <Accordion className="task-list">
-            <Accordion.Item eventKey="0">
-              <Accordion.Header><b>On-Going</b></Accordion.Header>
-              <Accordion.Body className="task-list-body">
-                <ListGroup as="ul">
-                  {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus("0", item)
-                  })}
-                </ListGroup>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-
-          <Accordion className="task-list">
-            <Accordion.Item eventKey="1">
-              <Accordion.Header><b>Open</b></Accordion.Header>
-              <Accordion.Body className="task-list-body" >
-                <ListGroup as="ul">
-                  {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus("1", item)
-                  })}
-                </ListGroup>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-
-          <Accordion className="task-list">
-            <Accordion.Item eventKey="2">
-              <Accordion.Header><b>Completed</b></Accordion.Header>
-              <Accordion.Body className="task-list-body">
-                <ListGroup as="ul">
-                  {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus("2", item)
-                  })}
-                </ListGroup>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-
-          <Accordion className="task-list">
-            <Accordion.Item eventKey="3">
-              <Accordion.Header><b>Overdue</b></Accordion.Header>
-              <Accordion.Body className="task-list-body">
-                <ListGroup as="ul">
-                  {this.state.data.map((item, idx) => {
-                    return this.getItemOfStatus("3", item)
-                  })}
-                </ListGroup>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-        </div>
-      </Container>
-    )
-  }
+      </div>
+    </Container>
+  );
 }
