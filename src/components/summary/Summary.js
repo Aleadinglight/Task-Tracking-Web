@@ -1,11 +1,11 @@
-import './TaskSummary.css';
+import './Summary.css';
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Navbar from 'react-bootstrap/Navbar';
 import MyChart from '../mychart/MyChart';
 
-export default function TaskSummary() {
+export default function Summary() {
   return (
     <div className="dashboard-content-container">
       <Navbar className="my-navbar">
