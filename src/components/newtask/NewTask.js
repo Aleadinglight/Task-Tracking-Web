@@ -20,21 +20,6 @@ export default function NewTask(props) {
     onHide,
     inputTask
   } = props;
-  // updateProps = (task) => {
-  //   if (!task) {
-  //     return;
-  //   }
-
-  //   setState({
-  //     task: {
-  //       name: task.name,
-  //       description: task.description,
-  //       priority: task.priority,
-  //       status: task.status,
-  //       due: task.due
-  //     }
-  //   })
-  // }
 
   const getTaskName = () => {
     if (!inputTask) {

@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
-// import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-
 import MyMenu from '../mymenu/MyMenu';
 import NewTask from '../newtask/NewTask';
 import TaskGroup from '../taskgroup/TaskGroup';
@@ -65,9 +60,7 @@ export default function TaskView() {
   };
 
   const openTask = (id) => {
-    console.log(`open task with id:`, id);
     const task = data.find((item) => item.id === id);
-    console.log(task);
     setTaskProps(task);
     setShowNewTask(true);
   };
